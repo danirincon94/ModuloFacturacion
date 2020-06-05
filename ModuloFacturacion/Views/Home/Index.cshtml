@@ -1,8 +1,24 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
-}
-
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+﻿@model IEnumerable<ModuloFacturacion.Models.Factura>
+<table class="table table-hover">
+    <tr>
+        <th>Id Factura</th>
+        <th>Id Cliente</th>
+        <th>Fecha Creacion</th>
+        <th>Valor Total</th>
+        <th>Acciones</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+<tr>
+    <td>@Html.DisplayFor(modelItem => item.IdFactura)</td>
+    <td>@Html.DisplayFor(modelItem => item.IdCliente)</td>
+    <td>@Html.DisplayFor(modelItem => item.FechaCreacion)</td>
+    <td>@Html.DisplayFor(modelItem => item.ValorTotal)</td>
+    <td>
+        @Html.ActionLink("Editar", "Edit", new { id = item.IdFactura })
+        @Html.ActionLink("Detalle", "Details", new { id = item.IdFactura })
+        @Html.ActionLink("Eliminar", "Delete", new { id = item.IdFactura })
+    </td>
+</tr>
+    }
+</table>

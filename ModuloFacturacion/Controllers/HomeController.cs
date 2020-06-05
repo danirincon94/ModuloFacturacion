@@ -11,6 +11,7 @@ namespace ModuloFacturacion.Controllers
 {
     public class HomeController : Controller
     {
+        FacturacionContext db = new FacturacionContext();
         private readonly ILogger<HomeController> _logger;
 
         public HomeController(ILogger<HomeController> logger)
@@ -20,7 +21,8 @@ namespace ModuloFacturacion.Controllers
 
         public IActionResult Index()
         {
-            return View();
+            var data = db.Factura;
+            return View(data);
         }
 
         public IActionResult Privacy()
