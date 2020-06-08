@@ -25,7 +25,7 @@ namespace ModuloFacturacion.Models
             if (!optionsBuilder.IsConfigured)
             {
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
-                optionsBuilder.UseSqlServer("Server=tcp:integracion.database.windows.net,1433;Initial Catalog=integracion;Persist Security Info=False;User ID=intergrupo;Password=Colombia20;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
+                optionsBuilder.UseSqlServer("Data Source=host.docker.internal,1433;Initial Catalog=integracion;Persist Security Info=True;User ID=sa;Password=Colombia20");
             }
         }
 
