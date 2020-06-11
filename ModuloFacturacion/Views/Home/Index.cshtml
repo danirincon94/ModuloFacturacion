@@ -1,4 +1,5 @@
 ﻿@model IEnumerable<ModuloFacturacion.Models.Factura>
+<h4>Lista de facturas</h4>
 <table class="table table-hover">
     <tr>
         <th>Id Factura</th>
@@ -17,7 +18,7 @@
     <td>
         @Html.ActionLink("Editar", "Edit", new { id = item.IdFactura })
         @Html.ActionLink("Detalle", "Details", new { id = item.IdFactura })
-        @Html.ActionLink("Eliminar", "Eliminar", new { id = item.IdFactura })
+        @Html.ActionLink("Crear", "Create", new { id = item.IdFactura })
     </td>
 </tr>
     }
