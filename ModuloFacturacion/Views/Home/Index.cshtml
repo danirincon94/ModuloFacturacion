@@ -15,8 +15,7 @@
     <td>@Html.DisplayFor(modelItem => item.IdCliente)</td>
     <td>@Html.DisplayFor(modelItem => item.FechaCreacion)</td>
     <td>@Html.DisplayFor(modelItem => item.ValorTotal)</td>
-    <td>
-        @Html.ActionLink("Editar", "Edit", new { id = item.IdFactura })
+    <td>       
         @Html.ActionLink("Detalle", "Details", new { id = item.IdFactura })
         @Html.ActionLink("Crear", "Create", new { id = item.IdFactura })
     </td>

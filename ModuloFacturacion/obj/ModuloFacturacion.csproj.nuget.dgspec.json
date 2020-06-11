@@ -1,24 +1,25 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\drincon\\source\\repos\\ModuloFacturacion\\ModuloFacturacion\\ModuloFacturacion.csproj": {}
+    "C:\\Users\\SISTEMAS4\\source\\repos\\ModuloFacturacion\\ModuloFacturacion\\ModuloFacturacion.csproj": {}
   },
   "projects": {
-    "C:\\Users\\drincon\\source\\repos\\ModuloFacturacion\\ModuloFacturacion\\ModuloFacturacion.csproj": {
+    "C:\\Users\\SISTEMAS4\\source\\repos\\ModuloFacturacion\\ModuloFacturacion\\ModuloFacturacion.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\drincon\\source\\repos\\ModuloFacturacion\\ModuloFacturacion\\ModuloFacturacion.csproj",
+        "projectUniqueName": "C:\\Users\\SISTEMAS4\\source\\repos\\ModuloFacturacion\\ModuloFacturacion\\ModuloFacturacion.csproj",
         "projectName": "ModuloFacturacion",
-        "projectPath": "C:\\Users\\drincon\\source\\repos\\ModuloFacturacion\\ModuloFacturacion\\ModuloFacturacion.csproj",
-        "packagesPath": "C:\\Users\\drincon\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\drincon\\source\\repos\\ModuloFacturacion\\ModuloFacturacion\\obj\\",
+        "projectPath": "C:\\Users\\SISTEMAS4\\source\\repos\\ModuloFacturacion\\ModuloFacturacion\\ModuloFacturacion.csproj",
+        "packagesPath": "C:\\Users\\SISTEMAS4\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\SISTEMAS4\\source\\repos\\ModuloFacturacion\\ModuloFacturacion\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+          "C:\\Microsoft\\Xamarin\\NuGet\\"
         ],
         "configFilePaths": [
-          "C:\\Users\\drincon\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Users\\SISTEMAS4\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp3.1"
