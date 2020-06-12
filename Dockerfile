@@ -6,6 +6,7 @@ EXPOSE 443
 FROM mcr.microsoft.com/dotnet/core/sdk:3.1-nanoserver-1809 AS build
 WORKDIR /src
 COPY ["ModuloFacturacion/ModuloFacturacion.csproj", "ModuloFacturacion/"]
+RUN set ASPNETCORE_ENVIRONMENT=QA
 RUN dotnet restore "ModuloFacturacion/ModuloFacturacion.csproj"
 COPY . .
 WORKDIR "/src/ModuloFacturacion"
