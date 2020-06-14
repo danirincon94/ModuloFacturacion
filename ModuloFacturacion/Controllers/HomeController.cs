@@ -25,6 +25,12 @@ namespace ModuloFacturacion.Controllers
             return View(data);
         }
 
+        public IActionResult DetalleFactura()
+        {
+            var data = db.DetalleFactura;
+            return View(data);
+        }
+
         public IActionResult Privacy()
         {
             return View();

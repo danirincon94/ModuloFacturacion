@@ -142,3 +142,4 @@ C:\Users\SISTEMAS4\source\repos\ModuloFacturacion\ModuloFacturacion\obj\Debug\ne
 C:\Users\SISTEMAS4\source\repos\ModuloFacturacion\ModuloFacturacion\obj\Debug\netcoreapp3.1\ModuloFacturacion.dll
 C:\Users\SISTEMAS4\source\repos\ModuloFacturacion\ModuloFacturacion\obj\Debug\netcoreapp3.1\ModuloFacturacion.pdb
 C:\Users\SISTEMAS4\source\repos\ModuloFacturacion\ModuloFacturacion\obj\Debug\netcoreapp3.1\ModuloFacturacion.genruntimeconfig.cache
+C:\Users\SISTEMAS4\source\repos\ModuloFacturacion\ModuloFacturacion\obj\Debug\netcoreapp3.1\Razor\Views\Home\DetalleFactura.cshtml.g.cs
