@@ -13,7 +13,7 @@
         <tr>
             <td>@Html.DisplayFor(modelItem => item.IdFactura)</td>
             <td>@Html.DisplayFor(modelItem => item.IdCliente)</td>
-            <td>@Html.DisplayFor(modelItem => item.FechaCreacion)</td>
+            <td>@string.Format("{0:d}", item.FechaCreacion)</td>
             <td>@string.Format("{0:C}",item.ValorTotal)</td>
             <td>
                 @Html.ActionLink("Detalle", "DetalleFactura")
