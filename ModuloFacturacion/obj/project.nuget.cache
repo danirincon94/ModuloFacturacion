@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "vcK3ruqbe8e15lrTWagTHKORVGVQzpnVYKURBjBl8cKRFDVXTh6f3A0GHeZbiN0NGgO0+DVz6zqqCDGiaebrAw==",
+  "dgSpecHash": "+REXynJBXO/+H65UTfU3lm6Yum6U+hGQVmGPocp6JKIjySBow+g1xwhSH1VTlZxrZCQYRAn+tWAwXg5LYd3vaQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\SISTEMAS4\\Source\\Repos\\ModuloFacturacion\\ModuloFacturacion\\ModuloFacturacion.csproj",
+  "projectFilePath": "C:\\Users\\SISTEMAS4\\source\\repos\\ModuloFacturacion\\ModuloFacturacion\\ModuloFacturacion.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\SISTEMAS4\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\1.1.1\\microsoft.bcl.asyncinterfaces.1.1.1.nupkg.sha512",
     "C:\\Users\\SISTEMAS4\\.nuget\\packages\\microsoft.bcl.hashcode\\1.1.0\\microsoft.bcl.hashcode.1.1.0.nupkg.sha512",

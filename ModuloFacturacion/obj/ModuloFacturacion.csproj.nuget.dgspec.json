@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\SISTEMAS4\\Source\\Repos\\ModuloFacturacion\\ModuloFacturacion\\ModuloFacturacion.csproj": {}
+    "C:\\Users\\SISTEMAS4\\source\\repos\\ModuloFacturacion\\ModuloFacturacion\\ModuloFacturacion.csproj": {}
   },
   "projects": {
-    "C:\\Users\\SISTEMAS4\\Source\\Repos\\ModuloFacturacion\\ModuloFacturacion\\ModuloFacturacion.csproj": {
+    "C:\\Users\\SISTEMAS4\\source\\repos\\ModuloFacturacion\\ModuloFacturacion\\ModuloFacturacion.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\SISTEMAS4\\Source\\Repos\\ModuloFacturacion\\ModuloFacturacion\\ModuloFacturacion.csproj",
+        "projectUniqueName": "C:\\Users\\SISTEMAS4\\source\\repos\\ModuloFacturacion\\ModuloFacturacion\\ModuloFacturacion.csproj",
         "projectName": "ModuloFacturacion",
-        "projectPath": "C:\\Users\\SISTEMAS4\\Source\\Repos\\ModuloFacturacion\\ModuloFacturacion\\ModuloFacturacion.csproj",
+        "projectPath": "C:\\Users\\SISTEMAS4\\source\\repos\\ModuloFacturacion\\ModuloFacturacion\\ModuloFacturacion.csproj",
         "packagesPath": "C:\\Users\\SISTEMAS4\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\SISTEMAS4\\Source\\Repos\\ModuloFacturacion\\ModuloFacturacion\\obj\\",
+        "outputPath": "C:\\Users\\SISTEMAS4\\source\\repos\\ModuloFacturacion\\ModuloFacturacion\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Microsoft\\Xamarin\\NuGet\\"
