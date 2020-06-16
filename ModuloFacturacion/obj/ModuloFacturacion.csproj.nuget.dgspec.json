@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\SISTEMAS4\\source\\repos\\ModuloFacturacion\\ModuloFacturacion\\ModuloFacturacion.csproj": {}
+    "C:\\Users\\JOFRE\\Source\\Repos\\ModuloFacturacion\\ModuloFacturacion\\ModuloFacturacion.csproj": {}
   },
   "projects": {
-    "C:\\Users\\SISTEMAS4\\source\\repos\\ModuloFacturacion\\ModuloFacturacion\\ModuloFacturacion.csproj": {
+    "C:\\Users\\JOFRE\\Source\\Repos\\ModuloFacturacion\\ModuloFacturacion\\ModuloFacturacion.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\SISTEMAS4\\source\\repos\\ModuloFacturacion\\ModuloFacturacion\\ModuloFacturacion.csproj",
+        "projectUniqueName": "C:\\Users\\JOFRE\\Source\\Repos\\ModuloFacturacion\\ModuloFacturacion\\ModuloFacturacion.csproj",
         "projectName": "ModuloFacturacion",
-        "projectPath": "C:\\Users\\SISTEMAS4\\source\\repos\\ModuloFacturacion\\ModuloFacturacion\\ModuloFacturacion.csproj",
-        "packagesPath": "C:\\Users\\SISTEMAS4\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\SISTEMAS4\\source\\repos\\ModuloFacturacion\\ModuloFacturacion\\obj\\",
+        "projectPath": "C:\\Users\\JOFRE\\Source\\Repos\\ModuloFacturacion\\ModuloFacturacion\\ModuloFacturacion.csproj",
+        "packagesPath": "C:\\Users\\JOFRE\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\JOFRE\\Source\\Repos\\ModuloFacturacion\\ModuloFacturacion\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Microsoft\\Xamarin\\NuGet\\"
         ],
         "configFilePaths": [
-          "C:\\Users\\SISTEMAS4\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\JOFRE\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
         ],
@@ -77,12 +77,6 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "downloadDependencies": [
-            {
-              "name": "Microsoft.AspNetCore.App.Ref",
-              "version": "[3.1.2, 3.1.2]"
-            }
-          ],
           "frameworkReferences": {
             "Microsoft.AspNetCore.App": {
               "privateAssets": "none"
@@ -91,7 +85,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.300\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.301\\RuntimeIdentifierGraph.json"
         }
       }
     }
