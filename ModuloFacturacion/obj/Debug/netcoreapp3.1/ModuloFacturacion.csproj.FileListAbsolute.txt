@@ -289,3 +289,4 @@ C:\Users\alvar\OneDrive\Documentos\Integracion\ModuloFacturacion\obj\Debug\netco
 C:\Users\alvar\OneDrive\Documentos\Integracion\ModuloFacturacion\obj\Debug\netcoreapp3.1\ModuloFacturacion.dll
 C:\Users\alvar\OneDrive\Documentos\Integracion\ModuloFacturacion\obj\Debug\netcoreapp3.1\ModuloFacturacion.pdb
 C:\Users\alvar\OneDrive\Documentos\Integracion\ModuloFacturacion\obj\Debug\netcoreapp3.1\ModuloFacturacion.genruntimeconfig.cache
+C:\Users\SISTEMAS4\source\repos\ModuloFacturacion\ModuloFacturacion\obj\Debug\netcoreapp3.1\Razor\Views\Home\CrearFactura.cshtml.g.cs

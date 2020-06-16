@@ -2,26 +2,27 @@
 <h4>Lista de facturas</h4>
 <table class="table table-hover">
     <tr>
-        <th>Id Factura</th>
-        <th>Id Cliente</th>
+        <th>Nro Factura</th>
+        <th>Cliente</th>
         <th>Fecha Creacion</th>
         <th>Valor Total</th>
         <th>Acciones</th>
     </tr>
     @foreach (var item in Model)
     {
-<tr>
-    <td>@Html.DisplayFor(modelItem => item.IdFactura)</td>
-    <td>@Html.DisplayFor(modelItem => item.IdCliente)</td>
-    <td>@string.Format("{0:d}", item.FechaCreacion)</td>
-    <td>@string.Format("{0:C}", item.ValorTotal)</td>
-    <td>
-        @Html.ActionLink("Detalle", "DetalleFactura")
-    </td>
-</tr>}
+        <tr>
+            <td>@Html.DisplayFor(modelItem => item.IdFactura)</td>
+            <td>@Html.DisplayFor(modelItem => item.IdClienteNavigation.NombreCliente)</td>
+            <td>@string.Format("{0:d}", item.FechaCreacion)</td>
+            <td>@string.Format("{0:C}", item.ValorTotal)</td>
+            <td>
+                @Html.ActionLink("Detalle", "DetalleFactura")
+            </td>
+        </tr>
+}
     <tr>
         <td colspan="5" align="center">
-            @Html.ActionLink("Crear", "Create", "Home", null, new { miAtributo = "Valor1", @class = "btn btn-Primary" })
+            @Html.ActionLink("Crear", "CrearFactura", "Home", null, new { miAtributo = "Valor1", @class = "btn btn-Primary" })
         </td>
     </tr>
 </table>
