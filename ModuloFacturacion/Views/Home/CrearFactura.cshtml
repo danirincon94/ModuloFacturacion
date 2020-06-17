@@ -1,83 +1,50 @@
-﻿@model IEnumerable<ModuloFacturacion.Models.DetalleFactura>
-<h4>Factura de Venta</h4>
+﻿@model ModuloFacturacion.Models.Factura
 
-<table width="100%" style="margin-top: 60px">
-    <tr>
-        <th colspan="2">
-            <h5>Datos del Cliente</h5>
-        </th>
-    <tr>
-        <td width="6%">
-            <h6>Cliente</h6>
-        </td>
-        <td width="94%">
-            <select class="form-control" id="Cliente" name="Cliente" style="width:250px">
-                <option>Seleccione el cliente</option>
-                <option>Daniel Rincon</option>
-                <option>Omar Castro</option>
-                <option>Jofre Sanchez</option>
-                <option>Alexander Cacais</option>                
-                <option>Juan David Alvarado</option>
-                <option>Prueba commit</option>
-            </select>
-        </td>
-    </tr>
-    <tr>
-        <td>
-            <h7>Telefono</h7>
-        </td>
-        <td>
-            <h7></h7>
-        </td>
-    </tr>
-    <tr>
-        <td>
-            <h7>Fec. Nac.</h7>
-        </td>
-        <td>
-            <h7></h7>
-        </td>
-    </tr>
-</table>
+@{ ViewData["Title"] = "CrearFactura";
+                Layout = "~/Views/Shared/_Layout.cshtml"; }
 
+<h1>CrearFactura</h1>
+
+<h4>Factura</h4>
 <hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="CrearFactura">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="IdFactura" class="control-label"></label>
+                <input asp-for="IdFactura" class="form-control" />
+                <span asp-validation-for="IdFactura" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="IdClienteNavigation.NombreCliente" class="control-label"></label>
+                <input asp-for="IdClienteNavigation.NombreCliente" class="form-control" asp-items="ViewBag.IdClienteNavigation.NombreCliente"></input>
+            </div>
+            <div class="form-group">
+                <label asp-for="FechaCreacion" class="control-label"></label>
+                <input asp-for="FechaCreacion" class="form-control" />
+                <span asp-validation-for="FechaCreacion" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ValorTotal" class="control-label"></label>
+                <input asp-for="ValorTotal" class="form-control" />
+                <span asp-validation-for="ValorTotal" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
 
-<table width="100%">
-    <tr>
-        <th colspan="2">
-            <h5>Datos de la Factura</h5>
-        </th>
-    <tr>
-        <td width="6%">
-            <h7>Número</h7>
-        </td>
-        <td width="94%">
-            <h7>3</h7>
-        </td>
-    </tr>
-    <tr>
-        <td>
-            <h7>Fecha</h7>
-        </td>
-        <td>
-            <h7>16/06/2020</h7>
-        </td>
-    </tr>
-</table>
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
 
-<br />
-
-<table class="table table-hover">
-    <tr>
-        <th>Producto</th>
-        <th>Precio</th>
-        <th>Cantidad</th>
-        <th>Valor Total</th>
-    </tr>
-    <tr>
-        <td></td>
-        <td>@string.Format("{0:C}", "")</td>
-        <td></td>
-        <td>@string.Format("{0:C}", "")</td>
-    </tr>
-</table>
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    <script src="https://code.jquery.com/jquery-3.5.1.js"
+            integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+            crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js" integrity="sha256-0YPKAwZP7Mp3ALMRVB2i8GXeEndvCq3eSl/WsAl1Ryk=" crossorigin="anonymous"></script>
+}

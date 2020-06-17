@@ -54,5 +54,14 @@ namespace ModuloFacturacion.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
+        [HttpPost]
+        public JsonResult BuscarCliente(string nombre)
+        {
+            using (var context = new FacturacionContext())
+            {
+                var data = context.Cliente.Where(x => x.NombreCliente.Contains(nombre)).ToList();
+                return Json(data);
+            }
+        }
     }
 }
