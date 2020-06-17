@@ -1,4 +1,4 @@
-﻿@model ModuloFacturacion.Models.DetalleFactura
+﻿@model  IEnumerable<ModuloFacturacion.Models.DetalleFactura>
 <h4>Factura de Venta</h4>
 
 <table width="100%" style="margin-top: 60px">
@@ -11,7 +11,7 @@
             <h6>Cliente</h6>
         </td>
         <td width="94%">
-            <h6>@Html.DisplayFor(model => model.IdFacturaNavigation.IdClienteNavigation.NombreCliente)</h6>
+            <h6>@Model.FirstOrDefault().IdFacturaNavigation.IdClienteNavigation.NombreCliente</h6>
         </td>
     </tr>
     <tr>
@@ -19,7 +19,7 @@
             <h7>Telefono</h7>
         </td>
         <td>
-            <h7>@Html.DisplayFor(model => model.IdFacturaNavigation.IdClienteNavigation.Telefono)</h7>
+            <h7>@Model.FirstOrDefault().IdFacturaNavigation.IdClienteNavigation.Telefono</h7>
         </td>
     </tr>
     <tr>
@@ -27,7 +27,7 @@
             <h7>Fec. Nac.</h7>
         </td>
         <td>
-            <h7>@Html.DisplayFor(model => model.IdFacturaNavigation.IdClienteNavigation.FechaNacimiento)</h7>
+            <h7>@Model.FirstOrDefault().IdFacturaNavigation.IdClienteNavigation.FechaNacimiento</h7>
         </td>
     </tr>
 </table>
@@ -44,7 +44,7 @@
             <h7>Número</h7>
         </td>
         <td width="94%">
-            <h7>@Html.DisplayFor(model => model.IdFacturaNavigation.IdFactura)</h7>
+            <h7>@Model.FirstOrDefault().IdFactura</h7>
         </td>
     </tr>
     <tr>
@@ -52,7 +52,7 @@
             <h7>Fecha</h7>
         </td>
         <td>
-            <h7>@Html.DisplayFor(model => model.IdFacturaNavigation.FechaCreacion)</h7>
+            <h7>@Model.FirstOrDefault().IdFacturaNavigation.FechaCreacion</h7>
         </td>
     </tr>
 </table>

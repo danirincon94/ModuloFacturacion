@@ -33,7 +33,7 @@ namespace ModuloFacturacion.Controllers
         {
             using (var context = new FacturacionContext())
             {
-                var data = context.DetalleFactura.Include(x => x.IdFacturaNavigation).Include(x => x.IdFacturaNavigation.IdClienteNavigation).Include(x => x.IdProductoNavigation).Where(x => x.IdFactura == id).FirstOrDefault();
+                var data = context.DetalleFactura.Include(x => x.IdFacturaNavigation).Include(x => x.IdFacturaNavigation.IdClienteNavigation).Include(x => x.IdProductoNavigation).Where(x => x.IdFactura == id).ToList();
                 return View(data);
             }
         }
