@@ -66,10 +66,12 @@
         <th>Cantidad</th>
         <th>Valor Total</th>
     </tr>
-    <tr>
-        <td>PELUQUEADA</td>
-        <td>@string.Format("{0:C}", 10200)</tdalign="left">
-        <td>1</td>
-        <td>@string.Format("{0:C}", 10200)</td>
-    </tr>
+    @foreach (var item in Model)
+    {
+<tr>
+    <td>@Html.DisplayFor(modelItem => item.IdProductoNavigation.Nombre)</td>
+    <td>@Html.DisplayFor(modelItem => item.IdProductoNavigation.ValorUnitario)</td>
+    <td>@Html.DisplayFor(modelItem => item.Cantidad)</td>
+    <td>@Html.DisplayFor(modelItem => item.IdFacturaNavigation.ValorTotal)</td>
+</tr>}
 </table>
