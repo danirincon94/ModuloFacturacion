@@ -16,7 +16,7 @@
             <td>@string.Format("{0:d}", item.FechaCreacion)</td>
             <td>@string.Format("{0:C}", item.ValorTotal)</td>
             <td>
-                @Html.ActionLink("Detalle", "DetalleFactura")
+                @Html.ActionLink("Detalle", "DetalleFactura", new { id = item.IdFactura })
             </td>
         </tr>
 }

@@ -6877,23 +6877,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\SISTEMAS4\\.nuget\\packages\\": {},
+    "C:\\Users\\alvar\\.nuget\\packages\\": {},
     "C:\\Microsoft\\Xamarin\\NuGet\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\SISTEMAS4\\Source\\Repos\\ModuloFacturacion\\ModuloFacturacion\\ModuloFacturacion.csproj",
+      "projectUniqueName": "C:\\Users\\alvar\\OneDrive\\Documentos\\Integracion 1\\ModuloFacturacion\\ModuloFacturacion.csproj",
       "projectName": "ModuloFacturacion",
-      "projectPath": "C:\\Users\\SISTEMAS4\\Source\\Repos\\ModuloFacturacion\\ModuloFacturacion\\ModuloFacturacion.csproj",
-      "packagesPath": "C:\\Users\\SISTEMAS4\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\SISTEMAS4\\Source\\Repos\\ModuloFacturacion\\ModuloFacturacion\\obj\\",
+      "projectPath": "C:\\Users\\alvar\\OneDrive\\Documentos\\Integracion 1\\ModuloFacturacion\\ModuloFacturacion.csproj",
+      "packagesPath": "C:\\Users\\alvar\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\alvar\\OneDrive\\Documentos\\Integracion 1\\ModuloFacturacion\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Microsoft\\Xamarin\\NuGet\\"
       ],
       "configFilePaths": [
-        "C:\\Users\\SISTEMAS4\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\alvar\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
       ],

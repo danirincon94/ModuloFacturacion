@@ -12,7 +12,7 @@ namespace ModuloFacturacion.Controllers
 {
     public class HomeController : Controller
     {
-        FacturacionContext db = new FacturacionContext();
+        
         private readonly ILogger<HomeController> _logger;
 
         public HomeController(ILogger<HomeController> logger)
@@ -29,16 +29,19 @@ namespace ModuloFacturacion.Controllers
             }
         }
 
-        public IActionResult DetalleFactura()
+        public IActionResult DetalleFactura(long id)
         {
-            var data = db.DetalleFactura;
-            return View(data);
+            using (var context = new FacturacionContext())
+            {
+                var data = context.DetalleFactura.Include(x => x.IdFacturaNavigation).Include(x => x.IdFacturaNavigation.IdClienteNavigation).Include(x => x.IdProductoNavigation).Where(x => x.IdFactura == id).FirstOrDefault();
+                return View(data);
+            }
         }
 
         public IActionResult CrearFactura()
         {
-            var data = db.DetalleFactura;
-            return View(data);
+            
+            return View();
         }
 
         public IActionResult Privacy()
