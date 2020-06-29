@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
@@ -12,7 +13,7 @@ namespace ModuloFacturacion.Controllers
 {
     public class HomeController : Controller
     {
-        
+
         private readonly ILogger<HomeController> _logger;
 
         public HomeController(ILogger<HomeController> logger)
@@ -40,8 +41,53 @@ namespace ModuloFacturacion.Controllers
 
         public IActionResult CrearFactura()
         {
-            
-            return View();
+            using (var context = new FacturacionContext())
+            {
+                Factura fact = new Factura();
+                fact.IdFactura = context.Factura.Max(x => x.IdFactura) + 1;
+                fact.DetalleFactura = new Collection<DetalleFactura>();
+                return View(fact);
+            }
+
+        }
+
+        public JsonResult GuardarFactura([FromBody] Factura factura)
+        {
+            using (FacturacionContext context = new FacturacionContext())
+            {
+                if (factura == null)
+                {
+                    factura = new Factura();
+                }
+
+                Factura factura1 = new Factura();
+                factura1.IdFactura = 2;
+                factura1.IdCliente = 2;
+                factura1.FechaCreacion = DateTime.Now;
+                factura1.ValorTotal = 100;
+
+                DetalleFactura det1 = new DetalleFactura();
+                det1.IdFactura = 2;
+                det1.IdProducto = 1;
+                det1.IdDetalleFactura = 2;
+                det1.Cantidad = 2;
+                det1.ValorTotal = 200;
+                factura1.DetalleFactura.Add(det1);
+
+                //det1 = new DetalleFactura();
+                //det1.IdFactura = 2;
+                //det1.IdProducto = 2;
+                //det1.IdDetalleFactura = 3;
+                //det1.Cantidad = 2;
+                //det1.ValorTotal = 300;
+                //detallesfactura.Add(det1);
+                //foreach (DetalleFactura detalle in detallefactura)
+                //{
+                //    context.DetalleFactura.Add(detalle);
+                //}
+                //int insertedRecords = context.SaveChanges();
+                return Json(factura1);
+            }
         }
 
         public IActionResult Privacy()

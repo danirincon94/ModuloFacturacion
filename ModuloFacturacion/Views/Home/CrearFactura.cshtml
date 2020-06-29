@@ -1,7 +1,9 @@
 ﻿@model ModuloFacturacion.Models.Factura
 
-@{ ViewData["Title"] = "CrearFactura";
-                Layout = "~/Views/Shared/_Layout.cshtml"; }
+@{
+    ViewData["Title"] = "CrearFactura";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
 
 <h1>CrearFactura</h1>
 
@@ -18,20 +20,44 @@
             </div>
             <div class="form-group">
                 <label asp-for="IdClienteNavigation.NombreCliente" class="control-label"></label>
-                <input asp-for="IdClienteNavigation.NombreCliente" class="form-control" asp-items="ViewBag.IdClienteNavigation.NombreCliente"></input>
+                <input asp-for="IdClienteNavigation.NombreCliente" class="form-control" asp-items="ViewBag.IdClienteNavigation.NombreCliente" />
             </div>
-            <div class="form-group">
-                <label asp-for="FechaCreacion" class="control-label"></label>
-                <input asp-for="FechaCreacion" class="form-control" />
-                <span asp-validation-for="FechaCreacion" class="text-danger"></span>
-            </div>
+            <table id="tblDetalle" class="table" cellpadding="0" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th style="width:150px">Id Producto</th>
+                        <th style="width:150px">Nombre Producto</th>
+                        <th style="width:150px">Cantidad</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (DetalleFactura det in Model.DetalleFactura)
+                    {
+                    <tr>
+                        <td>@det.IdProducto</td>
+                        <td>@det.IdProductoNavigation.Nombre</td>
+                        <td>@det.Cantidad</td>
+                        <td><input type="button" value="Remove" onclick="Remove(this)" /></td>
+                    </tr>
+                    }
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td><input type="text" id="txtIdProducto" /></td>
+                        <td><input type="text" id="txtNombreProducto" /></td>
+                        <td><input type="text" id="txtCantidad" /></td>
+                        <td><input type="button" id="btnAdd" value="Add" /></td>
+                    </tr>
+                </tfoot>
+            </table>
             <div class="form-group">
                 <label asp-for="ValorTotal" class="control-label"></label>
                 <input asp-for="ValorTotal" class="form-control" />
                 <span asp-validation-for="ValorTotal" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+                <input id="btnSave" value="Create" class="btn btn-primary" />
             </div>
         </form>
     </div>
@@ -43,8 +69,121 @@
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-    <script src="https://code.jquery.com/jquery-3.5.1.js"
-            integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
-            crossorigin="anonymous"></script>
-    <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js" integrity="sha256-0YPKAwZP7Mp3ALMRVB2i8GXeEndvCq3eSl/WsAl1Ryk=" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.js"
+        integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+        crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js" integrity="sha256-0YPKAwZP7Mp3ALMRVB2i8GXeEndvCq3eSl/WsAl1Ryk=" crossorigin="anonymous"></script>
+<script type="text/javascript">
+        $("body").on("click", "#btnAdd", function () {
+            //Reference the Name and Country TextBoxes.
+            var txtIdProducto = $("#txtIdProducto");
+            var txtNombreProducto = $("#txtNombreProducto");
+            var txtCantidad = $("#txtCantidad");
+
+            //Get the reference of the Table's TBODY element.
+            var tBody = $("#tblDetalle > TBODY")[0];
+
+            //Add Row.
+            var row = tBody.insertRow(-1);
+
+            //Add idproducto cell.
+            var cell = $(row.insertCell(-1));
+            cell.html(txtIdProducto.val());
+
+            //Add nombre prod cell.
+            cell = $(row.insertCell(-1));
+            cell.html(txtNombreProducto.val());
+
+            //Add cantidad cell.
+            cell = $(row.insertCell(-1));
+            cell.html(txtCantidad.val());
+
+            //Add Button cell.
+            cell = $(row.insertCell(-1));
+            var btnRemove = $("<input />");
+            btnRemove.attr("type", "button");
+            btnRemove.attr("onclick", "Remove(this);");
+            btnRemove.val("Remove");
+            cell.append(btnRemove);
+
+            //Clear the TextBoxes.
+            txtIdProducto.val("");
+            txtNombreProducto.val("");
+            txtCantidad.val("");
+        });
+
+        function Remove(button) {
+            //Determine the reference of the Row using the Button.
+            var row = $(button).closest("TR");
+            var name = $("TD", row).eq(0).html();
+            if (confirm("Do you want to delete: " + name)) {
+                //Get the reference of the Table.
+                var table = $("#tblDetalle")[0];
+
+                //Delete the Table row using it's Index.
+                table.deleteRow(row[0].rowIndex);
+            }
+        };
+
+        $("body").on("click", "#btnSave", function () {
+            //Loop through the Table rows and build a JSON array.
+            var factura = {};
+            factura.idFactura = parseInt($("#IdFactura").val());
+            factura.idCliente = parseInt($("#IdClienteNavigation_NombreCliente").val());
+            factura.fechaCreacion = "0001-01-01T00:00:00";
+            factura.valorTotal = 100;
+            factura.idClienteNavigation = null;
+            var detallefactura2 = new Array();
+            $("#tblDetalle TBODY TR").each(function () {
+                var row = $(this);
+                var det = {};
+                det.IdProducto = row.find("TD").eq(0).html();
+                det.NombreProducto = row.find("TD").eq(1).html();
+                det.Cantidad = row.find("TD").eq(2).html();
+                detallefactura2.push(det);
+            });
+
+
+
+            //PRUEBA
+            var detallesfactura = new Array();
+            //Registro 1
+            var detallefactura = {}
+            detallefactura.idFactura = 2;
+            detallefactura.idProducto = 1;
+            detallefactura.idDetalleFactura = 2;
+            detallefactura.cantidad = 2;
+            detallefactura.valorTotal = 200;
+            detallefactura.idFacturaNavigation = null;
+            detallefactura.idProductoNavigation = null;
+            detallesfactura.push(detallefactura);
+            factura.detalleFactura = detallesfactura;
+            //Registro 2
+            //var det2 = {}
+            //det2.idFactura = 2;
+            //det2.idProducto = 2;
+            //det2.idDetalleFactura = 3;
+            //det2.cantidad = 2;
+            //det2.valorTotal = 300;
+            //det2.idFacturaNavigation = null;
+            //det2.idProductoNavigation = null;
+            //detallesfactura.push(det2);
+            //imprime detalle
+            console.log(JSON.stringify(factura));
+            //Send the JSON array to Controller using AJAX.
+            $.ajax({
+                type: "POST",
+                url: "/Home/GuardarFactura",
+                data: JSON.stringify(factura),
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (r) {
+                    alert(r + " record(s) inserted.");
+                    console.log(JSON.stringify(r));
+                }
+            });
+        });
+</script>
 }
+
+
