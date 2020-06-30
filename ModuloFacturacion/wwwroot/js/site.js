@@ -24,3 +24,27 @@ $(document).ready(function () {
         }
     });
 });
+
+$(document).ready(function () {
+    $('#txtNombreProducto').autocomplete({
+        source: function (request, response) {
+            $.ajax({
+                url: '/Home/BuscarProductoXNombre',
+                type: 'POST',
+                dataType: 'json',
+                data: { nombre: request.term },
+                success: function (data) {
+                    response($.map(data, function (item) {
+                        console.log(item);
+                        $('#txtIdProducto').val(item.idProducto);
+                        $('#txtValorUnitario').val(item.valorUnitario);
+                        return { label: item.nombre, value: item.nombre };
+                    }))
+                },
+                error: function (data) {
+                    console.log(data);
+                }
+            })
+        }
+    });
+});

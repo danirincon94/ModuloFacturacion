@@ -60,9 +60,7 @@ namespace ModuloFacturacion.Models
             {
                 entity.HasKey(e => e.IdDetalleFactura);
 
-                entity.Property(e => e.IdDetalleFactura)
-                    .HasColumnName("idDetalleFactura")
-                    .ValueGeneratedNever();
+                entity.Property(e => e.IdDetalleFactura).HasColumnName("idDetalleFactura");
 
                 entity.Property(e => e.Cantidad).HasColumnName("cantidad");
 

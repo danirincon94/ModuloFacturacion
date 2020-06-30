@@ -15,7 +15,7 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="IdFactura" class="control-label"></label>
-                <input asp-for="IdFactura" class="form-control" />
+                <input asp-for="IdFactura" class="form-control" readonly="readonly"/>
                 <span asp-validation-for="IdFactura" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -28,6 +28,8 @@
                         <th style="width:150px">Id Producto</th>
                         <th style="width:150px">Nombre Producto</th>
                         <th style="width:150px">Cantidad</th>
+                        <th style="width:150px">Valor Total</th>
+                        <th style="width:150px">Cantidad</th>
                         <th></th>
                     </tr>
                 </thead>
@@ -38,22 +40,26 @@
                         <td>@det.IdProducto</td>
                         <td>@det.IdProductoNavigation.Nombre</td>
                         <td>@det.Cantidad</td>
+                        <td>ValorUnitario</td>
+                        <td>@det.ValorTotal</td>
                         <td><input type="button" value="Remove" onclick="Remove(this)" /></td>
                     </tr>
                     }
                 </tbody>
                 <tfoot>
                     <tr>
-                        <td><input type="text" id="txtIdProducto" /></td>
+                        <td><input type="text" id="txtIdProducto" readonly="readonly" /></td>
                         <td><input type="text" id="txtNombreProducto" /></td>
                         <td><input type="text" id="txtCantidad" /></td>
+                        <td><input type="text" id="txtValorUnitario" /></td>
+                        <td><input type="text" id="txtValorTotal" readonly="readonly"/></td>
                         <td><input type="button" id="btnAdd" value="Add" /></td>
                     </tr>
                 </tfoot>
             </table>
             <div class="form-group">
                 <label asp-for="ValorTotal" class="control-label"></label>
-                <input asp-for="ValorTotal" class="form-control" />
+                <input asp-for="ValorTotal" class="form-control" readonly="readonly"/>
                 <span asp-validation-for="ValorTotal" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -74,6 +80,12 @@
         crossorigin="anonymous"></script>
 <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js" integrity="sha256-0YPKAwZP7Mp3ALMRVB2i8GXeEndvCq3eSl/WsAl1Ryk=" crossorigin="anonymous"></script>
 <script type="text/javascript">
+    if ($("#txtIdProducto").val() != null) {
+        $("#txtCantidad").keyup(function () {
+            var totalDetalle = $('#txtValorUnitario').val() * $('#txtCantidad').val();
+            $('#txtValorTotal').val(totalDetalle);
+        });
+    }
         $("body").on("click", "#btnAdd", function () {
             //Reference the Name and Country TextBoxes.
             var txtIdProducto = $("#txtIdProducto");
@@ -106,6 +118,7 @@
             btnRemove.val("Remove");
             cell.append(btnRemove);
 
+            
             //Clear the TextBoxes.
             txtIdProducto.val("");
             txtNombreProducto.val("");
@@ -133,30 +146,34 @@
             factura.fechaCreacion = "0001-01-01T00:00:00";
             factura.valorTotal = 100;
             factura.idClienteNavigation = null;
-            var detallefactura2 = new Array();
+            var detallesfactura = new Array();
             $("#tblDetalle TBODY TR").each(function () {
                 var row = $(this);
-                var det = {};
-                det.IdProducto = row.find("TD").eq(0).html();
-                det.NombreProducto = row.find("TD").eq(1).html();
-                det.Cantidad = row.find("TD").eq(2).html();
-                detallefactura2.push(det);
+                var detallefactura = {};
+                detallefactura.idFactura = factura.idFactura;
+                detallefactura.idProducto = parseInt(row.find("TD").eq(0).html());
+                detallefactura.idDetalleFactura = 0;
+                detallefactura.cantidad = parseInt(row.find("TD").eq(2).html());
+                detallefactura.valorTotal = 200;
+                detallefactura.idFacturaNavigation = null;
+                detallefactura.idProductoNavigation = null;
+                detallesfactura.push(detallefactura);
             });
 
 
 
             //PRUEBA
-            var detallesfactura = new Array();
-            //Registro 1
-            var detallefactura = {}
-            detallefactura.idFactura = 2;
-            detallefactura.idProducto = 1;
-            detallefactura.idDetalleFactura = 2;
-            detallefactura.cantidad = 2;
-            detallefactura.valorTotal = 200;
-            detallefactura.idFacturaNavigation = null;
-            detallefactura.idProductoNavigation = null;
-            detallesfactura.push(detallefactura);
+            //var detallesfactura = new Array();
+            ////Registro 1
+            //var detallefactura = {}
+            //detallefactura.idFactura = 2;
+            //detallefactura.idProducto = 1;
+            //detallefactura.idDetalleFactura = 2;
+            //detallefactura.cantidad = 2;
+            //detallefactura.valorTotal = 200;
+            //detallefactura.idFacturaNavigation = null;
+            //detallefactura.idProductoNavigation = null;
+            //detallesfactura.push(detallefactura);
             factura.detalleFactura = detallesfactura;
             //Registro 2
             //var det2 = {}
@@ -178,7 +195,7 @@
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
                 success: function (r) {
-                    alert(r + " record(s) inserted.");
+                    alert("Factura Guardada Exitosamente!!");
                     console.log(JSON.stringify(r));
                 }
             });

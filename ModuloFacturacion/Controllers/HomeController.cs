@@ -59,34 +59,11 @@ namespace ModuloFacturacion.Controllers
                 {
                     factura = new Factura();
                 }
+                factura.FechaCreacion = DateTime.Now;
+                context.Factura.Add(factura);
 
-                Factura factura1 = new Factura();
-                factura1.IdFactura = 2;
-                factura1.IdCliente = 2;
-                factura1.FechaCreacion = DateTime.Now;
-                factura1.ValorTotal = 100;
-
-                DetalleFactura det1 = new DetalleFactura();
-                det1.IdFactura = 2;
-                det1.IdProducto = 1;
-                det1.IdDetalleFactura = 2;
-                det1.Cantidad = 2;
-                det1.ValorTotal = 200;
-                factura1.DetalleFactura.Add(det1);
-
-                //det1 = new DetalleFactura();
-                //det1.IdFactura = 2;
-                //det1.IdProducto = 2;
-                //det1.IdDetalleFactura = 3;
-                //det1.Cantidad = 2;
-                //det1.ValorTotal = 300;
-                //detallesfactura.Add(det1);
-                //foreach (DetalleFactura detalle in detallefactura)
-                //{
-                //    context.DetalleFactura.Add(detalle);
-                //}
-                //int insertedRecords = context.SaveChanges();
-                return Json(factura1);
+                int insertedRecords = context.SaveChanges();
+                return Json(insertedRecords);
             }
         }
 
@@ -106,6 +83,26 @@ namespace ModuloFacturacion.Controllers
             using (var context = new FacturacionContext())
             {
                 var data = context.Cliente.Where(x => x.NombreCliente.Contains(nombre)).ToList();
+                return Json(data);
+            }
+        }
+
+        [HttpPost]
+        public JsonResult BuscarProductoXNombre(string nombre)
+        {
+            using (var context = new FacturacionContext())
+            {
+                var data = context.Producto.Where(x => x.Nombre.Contains(nombre)).ToList();
+                return Json(data);
+            }
+        }
+
+        [HttpPost]
+        public JsonResult BuscarProductoXId(Int32 id)
+        {
+            using (var context = new FacturacionContext())
+            {
+                var data = context.Producto.Where(x => x.IdProducto == id).ToList();
                 return Json(data);
             }
         }
