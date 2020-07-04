@@ -5,6 +5,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using iText.Kernel.Colors;
 using iText.Kernel.Geom;
 using iText.Kernel.Pdf;
 using iText.Layout;
@@ -66,8 +67,8 @@ namespace ModuloFacturacion.Controllers
 
             //Datos Cliente
             cell = new Cell().Add(new Paragraph("Datos del Cliente").SetFontSize(13))
-                .SetBorder(Border.NO_BORDER)
-                .SetMarginTop(60);
+                .SetBorder(Border.NO_BORDER) 
+                .SetPaddingTop(60);
             table.AddCell(cell);
 
             cell = new Cell().Add(new Paragraph("Cliente      " + data[0].IdFacturaNavigation.IdClienteNavigation.NombreCliente).SetFontSize(11))
