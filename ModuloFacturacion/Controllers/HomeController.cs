@@ -2,8 +2,14 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using iText.Kernel.Geom;
+using iText.Kernel.Pdf;
+using iText.Layout;
+using iText.Layout.Borders;
+using iText.Layout.Element;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
@@ -37,6 +43,54 @@ namespace ModuloFacturacion.Controllers
                 var data = context.DetalleFactura.Include(x => x.IdFacturaNavigation).Include(x => x.IdFacturaNavigation.IdClienteNavigation).Include(x => x.IdProductoNavigation).Where(x => x.IdFactura == id).ToList();
                 return View(data);
             }
+        }
+
+        public IActionResult Pdf(long id)
+        {
+            FacturacionContext context = new FacturacionContext();
+
+            var data = context.DetalleFactura.Include(x => x.IdFacturaNavigation).Include(x => x.IdFacturaNavigation.IdClienteNavigation).Include(x => x.IdProductoNavigation).Where(x => x.IdFactura == id).ToList();
+
+            MemoryStream ms = new MemoryStream();
+
+            PdfWriter pw = new PdfWriter(ms);
+            PdfDocument pdfDocument = new PdfDocument(pw);
+            Document doc = new Document(pdfDocument, PageSize.LETTER);
+            //doc.SetMargins(75, 35, 70, 35);
+
+            Table table = new Table(1).UseAllAvailableWidth();
+
+            Cell cell = new Cell().Add(new Paragraph("Factura de Venta").SetFontSize(16))
+                .SetBorder(Border.NO_BORDER);
+            table.AddCell(cell);
+
+            //Datos Cliente
+            cell = new Cell().Add(new Paragraph("Datos del Cliente").SetFontSize(13))
+                .SetBorder(Border.NO_BORDER)
+                .SetMarginTop(60);
+            table.AddCell(cell);
+
+            cell = new Cell().Add(new Paragraph("Cliente      " + data[0].IdFacturaNavigation.IdClienteNavigation.NombreCliente).SetFontSize(11))
+                .SetBorder(Border.NO_BORDER);
+            table.AddCell(cell);
+
+            cell = new Cell().Add(new Paragraph("Telefono   " + data[0].IdFacturaNavigation.IdClienteNavigation.Telefono).SetFontSize(11))
+                .SetBorder(Border.NO_BORDER);
+            table.AddCell(cell);
+
+            cell = new Cell().Add(new Paragraph("Fec. Nac. " + data[0].IdFacturaNavigation.IdClienteNavigation.FechaNacimiento).SetFontSize(11))
+                .SetBorder(Border.NO_BORDER);
+            table.AddCell(cell);
+
+            doc.Add(table);
+            doc.Close();
+
+            byte[] bytesStream = ms.ToArray();
+            ms = new MemoryStream();
+            ms.Write(bytesStream, 0, bytesStream.Length);
+            ms.Position = 0;
+
+            return new FileStreamResult(ms, "application/pdf");
         }
 
         public IActionResult CrearFactura()

@@ -1,4 +1,4 @@
-﻿@model  IEnumerable<ModuloFacturacion.Models.DetalleFactura>
+﻿@model IEnumerable<ModuloFacturacion.Models.DetalleFactura>
 <h4>Factura de Venta</h4>
 
 <table width="100%" style="margin-top: 60px">
@@ -68,10 +68,16 @@
     </tr>
     @foreach (var item in Model)
     {
-<tr>
-    <td>@Html.DisplayFor(modelItem => item.IdProductoNavigation.Nombre)</td>
-    <td>@Html.DisplayFor(modelItem => item.IdProductoNavigation.ValorUnitario)</td>
-    <td>@Html.DisplayFor(modelItem => item.Cantidad)</td>
-    <td>@Html.DisplayFor(modelItem => item.IdFacturaNavigation.ValorTotal)</td>
-</tr>}
+        <tr>
+            <td>@Html.DisplayFor(modelItem => item.IdProductoNavigation.Nombre)</td>
+            <td>@Html.DisplayFor(modelItem => item.IdProductoNavigation.ValorUnitario)</td>
+            <td>@Html.DisplayFor(modelItem => item.Cantidad)</td>
+            <td>@Html.DisplayFor(modelItem => item.IdFacturaNavigation.ValorTotal)</td>
+        </tr>
+    }
+    <tr>
+        <td colspan="4" align="center">
+            @Html.ActionLink("Imprimir", "Pdf", new { id = @Model.FirstOrDefault().IdFactura }, new { miAtributo = "Valor1", @class = "btn btn-Primary" })
+        </td>
+    </tr>
 </table>
