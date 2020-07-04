@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\SISTEMAS4\\source\\repos\\ModuloFacturacion\\ModuloFacturacion\\ModuloFacturacion.csproj": {}
+    "C:\\Users\\alvar\\Source\\Repos\\ModuloFacturacion\\ModuloFacturacion\\ModuloFacturacion.csproj": {}
   },
   "projects": {
-    "C:\\Users\\SISTEMAS4\\source\\repos\\ModuloFacturacion\\ModuloFacturacion\\ModuloFacturacion.csproj": {
+    "C:\\Users\\alvar\\Source\\Repos\\ModuloFacturacion\\ModuloFacturacion\\ModuloFacturacion.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\SISTEMAS4\\source\\repos\\ModuloFacturacion\\ModuloFacturacion\\ModuloFacturacion.csproj",
+        "projectUniqueName": "C:\\Users\\alvar\\Source\\Repos\\ModuloFacturacion\\ModuloFacturacion\\ModuloFacturacion.csproj",
         "projectName": "ModuloFacturacion",
-        "projectPath": "C:\\Users\\SISTEMAS4\\source\\repos\\ModuloFacturacion\\ModuloFacturacion\\ModuloFacturacion.csproj",
-        "packagesPath": "C:\\Users\\SISTEMAS4\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\SISTEMAS4\\source\\repos\\ModuloFacturacion\\ModuloFacturacion\\obj\\",
+        "projectPath": "C:\\Users\\alvar\\Source\\Repos\\ModuloFacturacion\\ModuloFacturacion\\ModuloFacturacion.csproj",
+        "packagesPath": "C:\\Users\\alvar\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\alvar\\Source\\Repos\\ModuloFacturacion\\ModuloFacturacion\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Microsoft\\Xamarin\\NuGet\\"
         ],
         "configFilePaths": [
-          "C:\\Users\\SISTEMAS4\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\alvar\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
         ],

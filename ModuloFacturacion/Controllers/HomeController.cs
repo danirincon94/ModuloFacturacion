@@ -83,7 +83,46 @@ namespace ModuloFacturacion.Controllers
                 .SetBorder(Border.NO_BORDER);
             table.AddCell(cell);
 
+            //Datos Factura
+            cell = new Cell().Add(new Paragraph("Datos de la Factura").SetFontSize(13))
+               .SetBorder(Border.NO_BORDER)
+               .SetPaddingTop(20);
+            table.AddCell(cell);
+
+            cell = new Cell().Add(new Paragraph("Número   " + data[0].IdFactura).SetFontSize(11))
+                .SetBorder(Border.NO_BORDER);
+            table.AddCell(cell);
+
+            cell = new Cell().Add(new Paragraph("Fecha      " + data[0].IdFacturaNavigation.FechaCreacion).SetFontSize(11))
+                .SetBorder(Border.NO_BORDER)
+                .SetPaddingBottom(20);
+            table.AddCell(cell);
+
             doc.Add(table);
+
+            Table _table = new Table(4).UseAllAvailableWidth();
+            Cell _cell = new Cell().Add(new Paragraph("Producto")).SetBold().SetFontSize(9).SetCharacterSpacing(1);
+            _table.AddCell(_cell);
+            _cell = new Cell().Add(new Paragraph("Precio")).SetBold().SetFontSize(9).SetCharacterSpacing(1);
+            _table.AddCell(_cell);
+            _cell = new Cell().Add(new Paragraph("Cantidad")).SetBold().SetFontSize(9).SetCharacterSpacing(1);
+            _table.AddCell(_cell);
+            _cell = new Cell().Add(new Paragraph("Valor")).SetBold().SetFontSize(9).SetCharacterSpacing(1);
+            _table.AddCell(_cell);
+
+            foreach (var item in data)
+            {
+                _cell = new Cell().Add(new Paragraph(item.IdProductoNavigation.Nombre)).SetFontSize(9);
+                _table.AddCell(_cell);
+                _cell = new Cell().Add(new Paragraph(string.Format("{0:C}", item.IdProductoNavigation.ValorUnitario))).SetFontSize(9);
+                _table.AddCell(_cell);
+                _cell = new Cell().Add(new Paragraph(item.Cantidad.ToString())).SetFontSize(9);
+                _table.AddCell(_cell);
+                _cell = new Cell().Add(new Paragraph(string.Format("{0:C}", item.IdFacturaNavigation.ValorTotal))).SetFontSize(9);
+                _table.AddCell(_cell);
+            }
+
+            doc.Add(_table);
             doc.Close();
 
             byte[] bytesStream = ms.ToArray();
