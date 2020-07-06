@@ -16,6 +16,7 @@ script:
  # - docker rmi modulofacturacion -f
   - docker build -t modulofacturacion .
   
+  
   deploy:
   provider: script
   script:
