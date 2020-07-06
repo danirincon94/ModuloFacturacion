@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30114.105
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ModuloFacturacion", "ModuloFacturacion\ModuloFacturacion.csproj", "{AAF2C23D-F9B6-467A-A6B3-CF1A6C1D6634}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ModuloFacturacion", "ModuloFacturacion\ModuloFacturacion.csproj", "{AAF2C23D-F9B6-467A-A6B3-CF1A6C1D6634}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTestProject", "UnitTestProject\UnitTestProject.csproj", "{F726A7CB-7636-4DEC-86AA-9B7277AEC252}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{AAF2C23D-F9B6-467A-A6B3-CF1A6C1D6634}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AAF2C23D-F9B6-467A-A6B3-CF1A6C1D6634}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AAF2C23D-F9B6-467A-A6B3-CF1A6C1D6634}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F726A7CB-7636-4DEC-86AA-9B7277AEC252}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F726A7CB-7636-4DEC-86AA-9B7277AEC252}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F726A7CB-7636-4DEC-86AA-9B7277AEC252}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F726A7CB-7636-4DEC-86AA-9B7277AEC252}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
