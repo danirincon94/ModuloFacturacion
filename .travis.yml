@@ -1,5 +1,13 @@
 language: csharp
 mono: none
 dotnet: 3.1
+
+services:
+  - docker
+  
+before_install:
+  # login to docker registries (dockerhub)
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+
 script:
  - dotnet restore
