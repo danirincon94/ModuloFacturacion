@@ -1,6 +1,7 @@
 language: csharp
 mono: none
 dotnet: 3.1
+os: windows
 
 services:
   - docker
@@ -11,4 +12,4 @@ before_install:
 
 script:
  - dotnet restore
- - docker build -t modulofacturacion .  
+ - docker build -t modulofacturacion . 
