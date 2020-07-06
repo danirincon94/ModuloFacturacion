@@ -11,3 +11,14 @@ before_install:
 
 script:
  - dotnet restore
+ # build docker images
+ # - docker rm ModuloFacturacion -f
+ # - docker rmi modulofacturacion -f
+  - docker build -t modulofacturacion .
+  
+  deploy:
+  provider: script
+  script:
+    # push to dockerhub
+    docker push modulofacturacion;
+  branch: master
