@@ -6,4 +6,4 @@ services:
   - docker
   
 before_install:
-  - docket build -t modulofacturacion .
+  - docker build -t modulofacturacion .
