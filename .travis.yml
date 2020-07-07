@@ -11,4 +11,4 @@ before_install:
 
 script:
  - dotnet restore
- - dotnet build -t modulofacturacion .
+ - dotnet build
