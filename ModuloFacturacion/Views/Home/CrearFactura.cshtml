@@ -1,4 +1,4 @@
-﻿@model ModuloFacturacion.Models.Factura
+@model ModuloFacturacion.Models.Factura
 
 @{
     ViewData["Title"] = "CrearFactura";
@@ -28,8 +28,8 @@
                         <th style="width:150px">Id Producto</th>
                         <th style="width:150px">Nombre Producto</th>
                         <th style="width:150px">Cantidad</th>
+                        <th style="width:150px">Valor Unitario</th>
                         <th style="width:150px">Valor Total</th>
-                        <th style="width:150px">Cantidad</th>
                         <th></th>
                     </tr>
                 </thead>
@@ -80,6 +80,7 @@
         crossorigin="anonymous"></script>
 <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js" integrity="sha256-0YPKAwZP7Mp3ALMRVB2i8GXeEndvCq3eSl/WsAl1Ryk=" crossorigin="anonymous"></script>
 <script type="text/javascript">
+    var contadorTotal = 0;
     if ($("#txtIdProducto").val() != null) {
         $("#txtCantidad").keyup(function () {
             var totalDetalle = $('#txtValorUnitario').val() * $('#txtCantidad').val();
@@ -87,28 +88,39 @@
         });
     }
         $("body").on("click", "#btnAdd", function () {
-            //Reference the Name and Country TextBoxes.
+            
             var txtIdProducto = $("#txtIdProducto");
             var txtNombreProducto = $("#txtNombreProducto");
             var txtCantidad = $("#txtCantidad");
+            var txtValorUnitario = $("#txtValorUnitario");
+            var txtValorTotal = $("#txtValorTotal");
 
-            //Get the reference of the Table's TBODY element.
+           
             var tBody = $("#tblDetalle > TBODY")[0];
 
-            //Add Row.
+            
             var row = tBody.insertRow(-1);
 
-            //Add idproducto cell.
+           
             var cell = $(row.insertCell(-1));
             cell.html(txtIdProducto.val());
 
-            //Add nombre prod cell.
+            
             cell = $(row.insertCell(-1));
             cell.html(txtNombreProducto.val());
 
-            //Add cantidad cell.
             cell = $(row.insertCell(-1));
             cell.html(txtCantidad.val());
+            
+            cell = $(row.insertCell(-1));
+            cell.html(txtValorUnitario.val());
+
+            
+            cell = $(row.insertCell(-1));
+            cell.html(txtValorTotal.val());
+
+            
+            
 
             //Add Button cell.
             cell = $(row.insertCell(-1));
@@ -117,12 +129,16 @@
             btnRemove.attr("onclick", "Remove(this);");
             btnRemove.val("Remove");
             cell.append(btnRemove);
-
-            
+            console.log(txtValorTotal.val());
+            contadorTotal = contadorTotal + parseInt(txtValorTotal.val());
+            $("#ValorTotal").val(contadorTotal);
+            console.log($("#ValorTotal").val());
             //Clear the TextBoxes.
             txtIdProducto.val("");
             txtNombreProducto.val("");
             txtCantidad.val("");
+            txtValorUnitario.val("");
+            txtValorTotal.val("");
         });
 
         function Remove(button) {
@@ -144,7 +160,8 @@
             factura.idFactura = parseInt($("#IdFactura").val());
             factura.idCliente = parseInt($("#IdClienteNavigation_NombreCliente").val());
             factura.fechaCreacion = "0001-01-01T00:00:00";
-            factura.valorTotal = 100;
+            console.log($("#ValorTotal").val());
+            factura.valorTotal = parseInt($("#ValorTotal").val());
             factura.idClienteNavigation = null;
             var detallesfactura = new Array();
             $("#tblDetalle TBODY TR").each(function () {
@@ -154,7 +171,7 @@
                 detallefactura.idProducto = parseInt(row.find("TD").eq(0).html());
                 detallefactura.idDetalleFactura = 0;
                 detallefactura.cantidad = parseInt(row.find("TD").eq(2).html());
-                detallefactura.valorTotal = 200;
+                detallefactura.valorTotal = parseInt(row.find("TD").eq(4).html());
                 detallefactura.idFacturaNavigation = null;
                 detallefactura.idProductoNavigation = null;
                 detallesfactura.push(detallefactura);
@@ -196,6 +213,7 @@
                 dataType: "json",
                 success: function (r) {
                     alert("Factura Guardada Exitosamente!!");
+                    location.href = "Index";
                     console.log(JSON.stringify(r));
                 }
             });
