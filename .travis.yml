@@ -11,11 +11,4 @@ before_install:
 
 script:
  - dotnet restore
- - dotnet build
-
-deploy:
-  provider: script
-  script:
-    # push to dockerhub
-    dotnet push;
-  branch: master
+ - dotnet build -t modulofacturacion .
