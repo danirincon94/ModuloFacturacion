@@ -11,4 +11,4 @@ before_install:
 
 script:
  - dotnet restore
- - docker build -t modulofacturacion . 
+ - docker build
