@@ -7,6 +7,3 @@ services:
   
 before_install:
   - docker build -t modulofacturacion .
- 
- script:
-  - dotnet build
