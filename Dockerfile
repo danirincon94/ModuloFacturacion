@@ -6,10 +6,10 @@ EXPOSE 443
 FROM amd64/buildpack-deps:bionic-scm AS build
 WORKDIR /src
 COPY ["ModuloFacturacion/ModuloFacturacion.csproj", "ModuloFacturacion/"]
-RUN dotnet restore "ModuloFacturacion/ModuloFacturacion.csproj"
+RUN dotnet restore "ModuloFacturacion/ModuloFacturacion.csproj" -r linux-musl-x64
 COPY . .
 WORKDIR "/src/ModuloFacturacion"
-RUN dotnet build "ModuloFacturacion.csproj" -c Release -o /app/build
+RUN dotnet build "ModuloFacturacion.csproj" -c Release -o /app/build -r linux-musl-x64
 
 FROM build AS publish
 RUN dotnet publish "ModuloFacturacion.csproj" -c Release -o /app/publish -r linux-musl-x64
