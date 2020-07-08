@@ -1,10 +1,19 @@
-FROM mcr.microsoft.com/dotnet/core/sdk:3.1-alpine AS build
-WORKDIR /source
-COPY "ModuloFacturacion/ModuloFacturacion.csproj" .
-RUN dotnet restore -r linux-musl-x64
-COPY . .
-RUN dotnet publish "ModuloFacturacion.csproj" -c Release -o /app -r linux-musl-x64
-FROM mcr.microsoft.com/dotnet/core/runtime-deps:3.1-alpine
+FROM mcr.microsoft.com/dotnet/core/runtime AS base
 WORKDIR /app
-COPY --from=build /app .
+EXPOSE 80
+EXPOSE 443
+
+FROM amd64/buildpack-deps:bionic-scm AS build
+WORKDIR /src
+COPY ["ModuloFacturacion/ModuloFacturacion.csproj", "ModuloFacturacion/"]
+COPY . .
+WORKDIR "/src/ModuloFacturacion"
+RUN dotnet build "ModuloFacturacion.csproj" -c Release -o /app/build -r linux-musl-x64
+
+FROM build AS publish
+RUN dotnet publish "ModuloFacturacion.csproj" -c Release -o /app/publish -r linux-musl-x64
+
+FROM base AS final
+WORKDIR /app
+COPY --from=publish /app/publish .
 ENTRYPOINT ["dotnet", "ModuloFacturacion.dll"]
