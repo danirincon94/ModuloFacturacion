@@ -1,8 +1,10 @@
-FROM microsoft/dotnet:3.1-sdk
-COPY . /app
+FROM mcr.microsoft.com/dotnet/core/sdk:3.1-alpine AS build
+WORKDIR /source
+COPY *.csproj .
+RUN dotnet restore -r linux-musl-x64
+COPY . .
+RUN dotnet publish -c release -o /app -r linux-musl-x64 --self-contained true --no-restore /p:PublishTrimmed=true /p:PublishReadyToRun=true
+FROM mcr.microsoft.com/dotnet/core/runtime-deps:3.1-alpine
 WORKDIR /app
-RUN ["dotnet", "restore"]
-RUN ["dotnet", "build"]
-EXPOSE 80/tcp
-RUN chmod +x ./entrypoint.sh
-CMD /bin/bash ./entrypoint.sh
+COPY --from=build /app .
+ENTRYPOINT ["dotnet", "ModuloFacturacion.dll"]
