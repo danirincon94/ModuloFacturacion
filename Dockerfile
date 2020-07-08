@@ -13,8 +13,6 @@ COPY . .
 WORKDIR "/src/ModuloFacturacion"
 RUN dotnet restore ModuloFacturacion.csproj
 COPY . .
-WORKDIR "/src/UnitTestProject"
-RUN dotnet test UnitTestProject.csproj
 
 FROM base AS final
 WORKDIR /app
