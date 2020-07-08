@@ -8,7 +8,9 @@ services:
 before_install:
   - docker build -t modulofacturacion .
   
-script:
+install:
   - dotnet restore
+  
+script:
   - dotnet build
   - dotnet test UnitTestProject/UnitTestProject.csproj
