@@ -1,9 +1,9 @@
-FROM mcr.microsoft.com/dotnet/core/3.1.5-focal AS base
+FROM mcr.microsoft.com/dotnet/core/runtime AS base
 WORKDIR /app
 EXPOSE 80
 EXPOSE 443
 
-FROM mcr.microsoft.com/dotnet/core/sdk:3.1.301-focal AS build
+FROM amd64/buildpack-deps:bionic-scm AS build
 WORKDIR /src
 COPY ["ModuloFacturacion/ModuloFacturacion.csproj", "ModuloFacturacion/"]
 COPY . .
