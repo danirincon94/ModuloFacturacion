@@ -8,10 +8,10 @@ WORKDIR /src
 COPY ["ModuloFacturacion/ModuloFacturacion.csproj", "ModuloFacturacion/"]
 COPY . .
 WORKDIR "/src/ModuloFacturacion"
-RUN dotnet build "ModuloFacturacion.csproj" -c Release -o /app/build
+RUN sudo dotnet build "ModuloFacturacion.csproj" -c Release -o /app/build
 
 FROM build AS publish
-RUN dotnet publish "ModuloFacturacion.csproj" -c Release -o /app/publish
+RUN sudo dotnet publish "ModuloFacturacion.csproj" -c Release -o /app/publish
 
 FROM base AS final
 WORKDIR /app
