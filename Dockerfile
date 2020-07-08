@@ -6,6 +6,9 @@ EXPOSE 443
 FROM mcr.microsoft.com/dotnet/core/sdk:3.1-alpine AS build
 WORKDIR /src
 COPY ["ModuloFacturacion/ModuloFacturacion.csproj", "ModuloFacturacion/"]
+WORKDIR "/src/UnitTestProject"
+RUN dotnet restore UnitTestProject.csproj -r linux-musl-x64
+COPY . .
 WORKDIR "/src/ModuloFacturacion"
 RUN dotnet restore ModuloFacturacion.csproj -r linux-musl-x64
 COPY . .
