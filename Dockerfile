@@ -13,6 +13,8 @@ COPY . .
 WORKDIR "/src/ModuloFacturacion"
 RUN dotnet restore ModuloFacturacion.csproj -r linux-musl-x64
 COPY . .
+WORKDIR "/src/UnitTestProject"
+RUN dotnet build UnitTestProject.csproj -c Release -o /app/build -r linux-musl-x64
 WORKDIR "/src/ModuloFacturacion"
 RUN dotnet build ModuloFacturacion.csproj -c Release -o /app/build -r linux-musl-x64
 
