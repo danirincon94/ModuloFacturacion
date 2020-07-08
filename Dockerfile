@@ -7,8 +7,11 @@ FROM mcr.microsoft.com/dotnet/core/sdk:3.1 AS build
 WORKDIR /src
 COPY ["UnitTestProject/UnitTestProject.csproj", "UnitTestProject/"]
 COPY ["ModuloFacturacion/ModuloFacturacion.csproj", "ModuloFacturacion/"]
+WORKDIR "/src/UnitTestProject"
+RUN dotnet restore UnitTestProject.csproj
+COPY . .
 WORKDIR "/src/ModuloFacturacion"
-RUN dotnet restore ModuloFacturacion.csproj -r linux-musl-x64
+RUN dotnet restore ModuloFacturacion.csproj
 COPY . .
 WORKDIR "/src/UnitTestProject"
 RUN dotnet test UnitTestProject.csproj
