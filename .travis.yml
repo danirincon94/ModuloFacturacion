@@ -10,4 +10,3 @@ before_install:
  
  script:
   - dotnet build
-  - dotnet test UnitTestProject/UnitTestProject.csproj
