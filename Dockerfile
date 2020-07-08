@@ -3,8 +3,8 @@ WORKDIR /app
 COPY . .
 
 FROM mcr.microsoft.com/dotnet/core/sdk:3.1 AS build
-RUN dotnet restore
+RUN dotnet restore ModuloFacturacion.csproj
 
 # run tests on docker build
-RUN dotnet test
+RUN dotnet test UnitTestProject.csproj
 ENTRYPOINT ["dotnet", "ModuloFacturacion.dll"]
