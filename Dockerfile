@@ -3,16 +3,17 @@ WORKDIR /app
 EXPOSE 80
 EXPOSE 443
 
-FROM amd64/buildpack-deps:bionic-scm AS build
+FROM mcr.microsoft.com/dotnet/core/sdk:3.1-alpine AS build
 WORKDIR /src
 COPY ["ModuloFacturacion/ModuloFacturacion.csproj", "ModuloFacturacion/"]
-RUN dotnet restore "ModuloFacturacion/ModuloFacturacion.csproj" -r linux-musl-x64
+WORKDIR "/src/ModuloFacturacion"
+RUN dotnet restore ModuloFacturacion.csproj -r linux-musl-x64
 COPY . .
 WORKDIR "/src/ModuloFacturacion"
-RUN dotnet build "ModuloFacturacion.csproj" -c Release -o /app/build -r linux-musl-x64
+RUN dotnet build ModuloFacturacion.csproj -c Release -o /app/build -r linux-musl-x64
 
 FROM build AS publish
-RUN dotnet publish "ModuloFacturacion.csproj" -c Release -o /app/publish -r linux-musl-x64
+RUN dotnet publish ModuloFacturacion.csproj -c Release -o /app/publish -r linux-musl-x64
 
 FROM base AS final
 WORKDIR /app
